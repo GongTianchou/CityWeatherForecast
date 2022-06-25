@@ -30,7 +30,7 @@ SO THAT I can plan a trip accordingly
 
 ## Website
 
-https://gongtianchou.github.io/Work-Day-Scheduler/
+https://gongtianchou.github.io/CityWeatherForecast/
 
 ## Contributor
 
