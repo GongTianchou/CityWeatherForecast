@@ -87,23 +87,23 @@ function homePage() {
       }
 
       searchEl.addEventListener("click", function() {
-          const searchterm = inputEl.value;
+          const searchTerm = inputEl.value;
           getWeather(searchTerm);
           searchHistory.push(searchTerm);
           localStorage.setItem("search", JSON.stringify(searchHistory));
-          dispalySearchHistory();
+          renderSearchHistory();
       })
 
-      clearEl.addEventListener("cilck", function() {
+      clearEl.addEventListener("click", function() {
           searchHistory = [];
-          displaySearchHistory();
+          renderSearchHistory();
       })
 
       function k2f(K) {
           return Math.floor((K - 273.15) * 1.8 + 32);
       }
 
-      function displaySearchHistory() {
+      function renderSearchHistory() {
           historyEl.innerHTML = "";
           for (let i = 0; i < searchHistory.length; i++) {
               const historyItem = document.createElement("input");
@@ -121,9 +121,8 @@ function homePage() {
       }
 
       displaySearchHistory();
-      if (searchHistory.length > 1) {
+      if (searchHistory.length > 0) {
           getWeather(searchHistory[searchHistory.length - 1]);
       }
-
   }
   homePage();
