@@ -86,4 +86,44 @@ function homePage() {
               });
       }
 
-     
+      searchEl.addEventListener("click", function() {
+          const searchterm = inputEl.value;
+          getWeather(searchTerm);
+          searchHistory.push(searchTerm);
+          localStorage.setItem("search", JSON.stringify(searchHistory));
+          dispalySearchHistory();
+      })
+
+      clearEl.addEventListener("cilck", function() {
+          searchHistory = [];
+          displaySearchHistory();
+      })
+
+      function k2f(K) {
+          return Math.floor((K - 273.15) * 1.8 + 32);
+      }
+
+      function displaySearchHistory() {
+          historyEl.innerHTML = "";
+          for (let i = 0; i < searchHistory.length; i++) {
+              const historyItem = document.createElement("input");
+              
+              historyItem.setAttribute("type", "text");
+              historyItem.setAttribute("style", "margin-bottom: 7px;")
+              historyItem.setAttribute("readonly", true);
+              historyItem.setAttribute("class", "form-control-sm d-block bg-secondary");
+              historyItem.setAttribute("value", searchHistory[i]);
+              historyItem.addEventListener("click", function() {
+                  getWeather(historyItem.value);
+              })
+              historyEl.append(historyItem);
+          }
+      }
+
+      displaySearchHistory();
+      if (searchHistory.length > 1) {
+          getWeather(searchHistory[searchHistory.length - 1]);
+      }
+
+  }
+  homePage();
