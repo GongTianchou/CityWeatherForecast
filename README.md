@@ -1,4 +1,4 @@
-# Week-6-Weather-Search
+# Weather-Search
 
 # Table of contents
 1. [Description](#description)
